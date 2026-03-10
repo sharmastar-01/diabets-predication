@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction - Predict</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="grid-pattern"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg glass-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon"><i class="fas fa-heart-pulse"></i></span>
+                <span class="brand-text">DiaPredict</span><span class="brand-accent">Pro</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <span class="nav-icon"><i class="fas fa-home"></i></span>
+                            <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/prediction">
+                            <span class="nav-icon"><i class="fas fa-microchip"></i></span>
+                            <span class="nav-text">AI Predict</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">
+                            <span class="nav-icon"><i class="fas fa-flask"></i></span>
+                            <span class="nav-text">About</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="prediction-page py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="page-header text-center mb-5">
+                        <span class="page-tag">AI-Powered Analysis</span>
+                        <h1 class="page-title">
+                            Diabetes Risk <span class="gradient-text">Assessment</span>
+                        </h1>
+                        <p class="page-subtitle">
+                            Enter your health metrics to get an instant prediction using our advanced ML model
+                        </p>
+                    </div>
+
+                    <!-- Prediction Form Card -->
+                    <div class="card prediction-card glass-card">
+                        <div class="card-body p-5">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div class="form-section-badge">
+                                    <i class="fas fa-clipboard-list"></i>
+                                    <span>Health Data Input</span>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-glass btn-sm" data-bs-toggle="modal" data-bs-target="#helpModal">
+                                        <i class="fas fa-question-circle me-1"></i>Help
+                                    </button>
+                                    <button type="button" class="btn btn-glass btn-sm" data-bs-toggle="modal" data-bs-target="#privacyModal">
+                                        <i class="fas fa-shield-alt me-1"></i>Privacy
+                                    </button>
+                                </div>
+                            </div>
+                            <form id="predictionForm">
+                                <div class="row g-4">
+                                    <!-- Personal Information -->
+                                    <div class="col-12">
+                                        <h5 class="section-heading"><i class="fas fa-user me-2"></i>Personal Information</h5>
+                                    </div>
+                                    
+                                    <!-- Age -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="AGE" class="form-label-custom">
+                                            <i class="fas fa-birthday-cake me-2"></i>Age
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="AGE" name="AGE" 
+                                                   min="1" max="120" placeholder="Enter age" required>
+                                            <span class="input-unit">years</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Gender -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="GENDER" class="form-label-custom">
+                                            <i class="fas fa-venus-mars me-2"></i>Gender
+                                        </label>
+                                        <select class="form-select-custom" id="GENDER" name="GENDER" required>
+                                            <option value="">Select gender</option>
+                                            <option value="1">Male</option>
+                                            <option value="0">Female</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Height -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="HEIGHT" class="form-label-custom">
+                                            <i class="fas fa-ruler-vertical me-2"></i>Height
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="HEIGHT" name="HEIGHT" 
+                                                   min="50" max="250" step="0.1" placeholder="Enter height" required>
+                                            <span class="input-unit">cm</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Weight -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="WEIGHT" class="form-label-custom">
+                                            <i class="fas fa-weight me-2"></i>Weight
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="WEIGHT" name="WEIGHT" 
+                                                   min="20" max="500" step="0.1" placeholder="Enter weight" required>
+                                            <span class="input-unit">kg</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- BMI (calculated) -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="BMI" class="form-label-custom">
+                                            <i class="fas fa-calculator me-2"></i>BMI (Auto-calculated)
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="BMI" name="BMI" 
+                                                   step="0.1" placeholder="Auto-calculated" readonly>
+                                            <span class="input-unit">kg/m²</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Glucose -->
+                                    <div class="col-12 mt-4">
+                                        <h5 class="section-heading"><i class="fas fa-tint me-2"></i>Blood Glucose & Diabetes Markers</h5>
+                                    </div>
+
+                                    <!-- Glucose Level -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="GLUCOSE" class="form-label-custom">
+                                            <i class="fas fa-tint me-2"></i>Glucose
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="GLUCOSE" name="GLUCOSE" 
+                                                   min="0" max="500" placeholder="Enter glucose level" required>
+                                            <span class="input-unit">mg/dL</span>
+                                        </div>
+                                        <div class="form-hint">Normal: 70-100 mg/dL (fasting)</div>
+                                    </div>
+
+                                    <!-- HbA1c -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="HBA1C" class="form-label-custom">
+                                            <i class="fas fa-percentage me-2"></i>HbA1c
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="HBA1C" name="HBA1C" 
+                                                   min="0" max="20" step="0.1" placeholder="Enter HbA1c" required>
+                                            <span class="input-unit">%</span>
+                                        </div>
+                                        <div class="form-hint">Normal: < 5.7%</div>
+                                    </div>
+
+                                    <!-- Lipid Profile -->
+                                    <div class="col-12 mt-4">
+                                        <h5 class="section-heading"><i class="fas fa-chart-line me-2"></i>Lipid Profile</h5>
+                                    </div>
+
+                                    <!-- Total Cholesterol -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="TOTAL_CHOLESTEROL" class="form-label-custom">
+                                            <i class="fas fa-oil-can me-2"></i>Total Cholesterol
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="TOTAL_CHOLESTEROL" name="TOTAL_CHOLESTEROL" 
+                                                   min="0" max="500" placeholder="Enter cholesterol" required>
+                                            <span class="input-unit">mg/dL</span>
+                                        </div>
+                                        <div class="form-hint">Normal: < 200 mg/dL</div>
+                                    </div>
+
+                                    <!-- HDL -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="HDL" class="form-label-custom">
+                                            <i class="fas fa-shield-alt me-2"></i>HDL Cholesterol
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="HDL" name="HDL" 
+                                                   min="0" max="200" placeholder="Enter HDL" required>
+                                            <span class="input-unit">mg/dL</span>
+                                        </div>
+                                        <div class="form-hint">Normal: > 40 mg/dL (men), > 50 mg/dL (women)</div>
+                                    </div>
+
+                                    <!-- LDL -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="LDL" class="form-label-custom">
+                                            <i class="fas fa-exclamation-triangle me-2"></i>LDL Cholesterol
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="LDL" name="LDL" 
+                                                   min="0" max="300" placeholder="Enter LDL" required>
+                                            <span class="input-unit">mg/dL</span>
+                                        </div>
+                                        <div class="form-hint">Normal: < 100 mg/dL</div>
+                                    </div>
+
+                                    <!-- Triglycerides -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="TRIGLYCERIDES" class="form-label-custom">
+                                            <i class="fas fa-water me-2"></i>Triglycerides
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="TRIGLYCERIDES" name="TRIGLYCERIDES" 
+                                                   min="0" max="1000" placeholder="Enter triglycerides" required>
+                                            <span class="input-unit">mg/dL</span>
+                                        </div>
+                                        <div class="form-hint">Normal: < 150 mg/dL</div>
+                                    </div>
+
+                                    <!-- Kidney Function -->
+                                    <div class="col-12 mt-4">
+                                        <h5 class="section-heading"><i class="fas fa-kidney me-2"></i>Kidney Function</h5>
+                                    </div>
+
+                                    <!-- BUN -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="BUN" class="form-label-custom">
+                                            <i class="fas fa-flask me-2"></i>BUN
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="BUN" name="BUN" 
+                                                   min="0" max="200" step="0.1" placeholder="Enter BUN" required>
+                                            <span class="input-unit">mg/dL</span>
+                                        </div>
+                                        <div class="form-hint">Normal: 7-20 mg/dL</div>
+                                    </div>
+
+                                    <!-- Creatinine -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="CREATININE" class="form-label-custom">
+                                            <i class="fas fa-vial me-2"></i>Creatinine
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="CREATININE" name="CREATININE" 
+                                                   min="0" max="20" step="0.1" placeholder="Enter creatinine" required>
+                                            <span class="input-unit">mg/dL</span>
+                                        </div>
+                                        <div class="form-hint">Normal: 0.7-1.3 mg/dL</div>
+                                    </div>
+
+                                    <!-- Electrolytes -->
+                                    <div class="col-12 mt-4">
+                                        <h5 class="section-heading"><i class="fas fa-bolt me-2"></i>Electrolytes</h5>
+                                    </div>
+
+                                    <!-- Sodium -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="SODIUM" class="form-label-custom">
+                                            <i class="fas fa-salt me-2"></i>Sodium
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="SODIUM" name="SODIUM" 
+                                                   min="100" max="200" placeholder="Enter sodium" required>
+                                            <span class="input-unit">mEq/L</span>
+                                        </div>
+                                        <div class="form-hint">Normal: 136-145 mEq/L</div>
+                                    </div>
+
+                                    <!-- Potassium -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="POTASSIUM" class="form-label-custom">
+                                            <i class="fas fa-leaf me-2"></i>Potassium
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="POTASSIUM" name="POTASSIUM" 
+                                                   min="1" max="10" step="0.1" placeholder="Enter potassium" required>
+                                            <span class="input-unit">mEq/L</span>
+                                        </div>
+                                        <div class="form-hint">Normal: 3.5-5.0 mEq/L</div>
+                                    </div>
+
+                                    <!-- Vital Signs -->
+                                    <div class="col-12 mt-4">
+                                        <h5 class="section-heading"><i class="fas fa-heart-pulse me-2"></i>Vital Signs</h5>
+                                    </div>
+
+                                    <!-- Systolic BP -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="SYSTOLIC_BP" class="form-label-custom">
+                                            <i class="fas fa-arrow-up me-2"></i>Systolic BP
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="SYSTOLIC_BP" name="SYSTOLIC_BP" 
+                                                   min="60" max="250" placeholder="Systolic pressure" required>
+                                            <span class="input-unit">mmHg</span>
+                                        </div>
+                                        <div class="form-hint">Normal: < 120 mmHg</div>
+                                    </div>
+
+                                    <!-- Diastolic BP -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="DIASTOLIC_BP" class="form-label-custom">
+                                            <i class="fas fa-arrow-down me-2"></i>Diastolic BP
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="DIASTOLIC_BP" name="DIASTOLIC_BP" 
+                                                   min="40" max="150" placeholder="Diastolic pressure" required>
+                                            <span class="input-unit">mmHg</span>
+                                        </div>
+                                        <div class="form-hint">Normal: < 80 mmHg</div>
+                                    </div>
+
+                                    <!-- Heart Rate -->
+                                    <div class="col-md-6 col-lg-4">
+                                        <label for="HEART_RATE" class="form-label-custom">
+                                            <i class="fas fa-heartbeat me-2"></i>Heart Rate
+                                        </label>
+                                        <div class="input-group-custom">
+                                            <input type="number" class="form-control" id="HEART_RATE" name="HEART_RATE" 
+                                                   min="30" max="220" placeholder="Enter heart rate" required>
+                                            <span class="input-unit">bpm</span>
+                                        </div>
+                                        <div class="form-hint">Normal: 60-100 bpm</div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="text-center mt-5">
+                                    <button type="submit" class="btn btn-primary-glow btn-lg" id="predictBtn">
+                                        <span class="btn-content">
+                                            <i class="fas fa-robot me-2"></i>
+                                            <span>Analyze Risk</span>
+                                        </span>
+                                        <span class="btn-shine"></span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Info Cards -->
+                    <div class="row g-4 mt-4">
+                        <div class="col-md-4">
+                            <div class="info-card glass-card">
+                                <div class="info-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h5>Secure</h5>
+                                <p class="text-muted mb-0">Your data is processed locally and not stored.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info-card glass-card">
+                                <div class="info-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h5>Instant</h5>
+                                <p class="text-muted mb-0">Get results in seconds with our ML model.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info-card glass-card">
+                                <div class="info-icon">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <h5>Accurate</h5>
+                                <p class="text-muted mb-0">Based on advanced ML algorithms.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Result Modal - Unique Design -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-custom result-modal">
+            <div class="modal-content">
+                <div class="modal-header-custom result-header">
+                    <div class="header-decoration"></div>
+                    <h5 class="modal-title" id="resultModalLabel">
+                        <i class="fas fa-clipboard-check me-2"></i>Prediction Result
+                    </h5>
+                    <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body-custom result-body">
+                    <div class="result-visual">
+                        <div id="modalResultIcon" class="result-icon-custom mb-4">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <h2 id="modalResultTitle" class="result-title-custom mb-3">Result</h2>
+                    <p id="modalResultMessage" class="result-message mb-4"></p>
+                    
+                    <!-- Probability Bar -->
+                    <div class="probability-section">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="probability-label">Risk Probability</span>
+                            <span id="modalProbability" class="probability-value">0%</span>
+                        </div>
+                        <div class="probability-bar-container">
+                            <div id="probabilityBar" class="probability-fill" role="progressbar"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="modalResultDetails" class="result-details-custom"></div>
+                </div>
+                <div class="modal-footer-custom result-footer">
+                    <button type="button" class="btn btn-modal-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
+                    <button type="button" class="btn btn-modal-primary" id="newPredictionModal">
+                        <i class="fas fa-redo me-2"></i>New Prediction
+                    </button>
+                    <button type="button" class="btn btn-modal-download" id="downloadPdfModal">
+                        <i class="fas fa-file-pdf me-2"></i>Download PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal - Unique Design -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-sm modal-custom loading-modal">
+            <div class="modal-content">
+                <div class="modal-body-custom loading-body">
+                    <div class="loading-visual">
+                        <div class="loading-ring"></div>
+                        <div class="loading-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                    </div>
+                    <p class="loading-text">Processing your data...</p>
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <small class="loading-subtext">Calculating diabetes risk</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal - Unique Design -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-custom help-modal">
+            <div class="modal-content">
+                <div class="modal-header-custom help-header">
+                    <div class="header-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                    </div>
+                    <h5 class="modal-title" id="helpModalLabel">
+                        <i class="fas fa-question-circle me-2"></i>How to Use This Tool
+                    </h5>
+                    <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body-custom help-body">
+                    <div class="help-steps">
+                        <div class="help-step">
+                            <div class="step-number">01</div>
+                            <div class="step-content">
+                                <h6>Enter Personal Information</h6>
+                                <p>Fill in your age, gender, height, and weight. BMI is auto-calculated.</p>
+                            </div>
+                        </div>
+                        <div class="help-step">
+                            <div class="step-number">02</div>
+                            <div class="step-content">
+                                <h6>Blood Tests</h6>
+                                <p>Provide your glucose and HbA1c levels from a recent blood test.</p>
+                            </div>
+                        </div>
+                        <div class="help-step">
+                            <div class="step-number">03</div>
+                            <div class="step-content">
+                                <h6>Lipid Profile</h6>
+                                <p>Include your cholesterol, HDL, LDL, and triglycerides levels.</p>
+                            </div>
+                        </div>
+                        <div class="help-step">
+                            <div class="step-number">04</div>
+                            <div class="step-content">
+                                <h6>Vitals & Get Results</h6>
+                                <p>Enter blood pressure, heart rate, kidney function, and electrolytes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="help-disclaimer">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <span>This tool is for educational purposes only. Consult a healthcare provider.</span>
+                    </div>
+                </div>
+                <div class="modal-footer-custom help-footer">
+                    <button type="button" class="btn btn-modal-help" data-bs-dismiss="modal">
+                        <i class="fas fa-check me-2"></i>Got It!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal - Unique Design -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-custom privacy-modal">
+            <div class="modal-content">
+                <div class="modal-header-custom privacy-header">
+                    <div class="privacy-shield">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h5 class="modal-title" id="privacyModalLabel">
+                        <i class="fas fa-lock me-2"></i>Privacy & Data Policy
+                    </h5>
+                    <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body-custom privacy-body">
+                    <div class="privacy-features">
+                        <div class="privacy-feature">
+                            <div class="feature-icon-custom">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h6>Local Processing</h6>
+                                <p>All data is processed locally in your browser. Nothing is sent to servers.</p>
+                            </div>
+                        </div>
+                        <div class="privacy-feature">
+                            <div class="feature-icon-custom">
+                                <i class="fas fa-eraser"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h6>No Storage</h6>
+                                <p>Your health data is not stored. Close the page and it's gone.</p>
+                            </div>
+                        </div>
+                        <div class="privacy-feature">
+                            <div class="feature-icon-custom">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h6>Secure Transmission</h6>
+                                <p>All data uses encrypted HTTPS connections when applicable.</p>
+                            </div>
+                        </div>
+                        <div class="privacy-feature">
+                            <div class="feature-icon-custom">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h6>No Third-Party Sharing</h6>
+                                <p>We never share your personal health information with anyone.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer-custom privacy-footer">
+                    <div class="trust-badge">
+                        <i class="fas fa-heart-pulse me-2"></i>
+                        <span>Your Trust Matters</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

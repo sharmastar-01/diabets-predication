@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Diabetes Prediction System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-heartbeat me-2"></i>Diabetes Predictor
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/prediction">
+                            <i class="fas fa-calculator me-1"></i>Predict
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about">
+                            <i class="fas fa-info-circle me-1"></i>About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="display-4 fw-bold mb-4">About Our Project</h1>
+                    <p class="lead">
+                        Learn how machine learning is revolutionizing diabetes prediction and early detection.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ML Explanation Section -->
+    <section class="ml-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">
+                <i class="fas fa-brain me-3 text-primary"></i>Machine Learning in Diabetes Prediction
+            </h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">
+                                <i class="fas fa-database me-2 text-primary"></i>The Dataset
+                            </h4>
+                            <p class="card-text">
+                                Our prediction model is trained on the <strong>Pima Indians Diabetes Database</strong>, 
+                                a well-known dataset in the machine learning community. It contains data from 768 
+                                women of Pima Indian heritage, all at least 21 years old.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>768 patient records</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>8 input features</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Binary classification</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Extensively studied</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">
+                                <i class="fas fa-cogs me-2 text-primary"></i>The Algorithm
+                            </h4>
+                            <p class="card-text">
+                                We use a <strong>Logistic Regression</strong> model, which is excellent for binary 
+                                classification problems like diabetes prediction. The model learns patterns from 
+                                historical patient data to predict future outcomes.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>High accuracy rate</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Fast predictions</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Easy to interpret</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Proven effectiveness</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Explained Section -->
+    <section class="features-explained py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Understanding the Input Features</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-explained-card">
+                        <div class="feature-header">
+                            <i class="fas fa-birthday-cake"></i>
+                            <h5>Age</h5>
+                        </div>
+                        <p>The age of the patient in years. Diabetes risk increases significantly after age 45.</p>
+                        <div class="feature-range">
+                            <span class="badge bg-success">Low Risk: < 35</span>
+                            <span class="badge bg-warning text-dark">Medium: 35-44</span>
+                            <span class="badge bg-danger">High Risk: 45+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-explained-card">
+                        <div class="feature-header">
+                            <i class="fas fa-tint"></i>
+                            <h5>Glucose Level</h5>
+                        </div>
+                        <p>Plasma glucose concentration - the primary indicator of diabetes.</p>
+                        <div class="feature-range">
+                            <span class="badge bg-success">Normal: < 100</span>
+                            <span class="badge bg-warning text-dark">Prediabetic: 100-125</span>
+                            <span class="badge bg-danger">Diabetic: 126+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-explained-card">
+                        <div class="feature-header">
+                            <i class="fas fa-heart"></i>
+                            <h5>Blood Pressure</h5>
+                        </div>
+                        <p>Diastolic blood pressure (mm Hg). High BP is linked to diabetes complications.</p>
+                        <div class="feature-range">
+                            <span class="badge bg-success">Normal: < 80</span>
+                            <span class="badge bg-warning text-dark">Elevated: 80-89</span>
+                            <span class="badge bg-danger">High: 90+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-explained-card">
+                        <div class="feature-header">
+                            <i class="fas fa-weight"></i>
+                            <h5>BMI</h5>
+                        </div>
+                        <p>Body Mass Index - a measure of body fat based on height and weight.</p>
+                        <div class="feature-range">
+                            <span class="badge bg-success">Normal: 18.5-24.9</span>
+                            <span class="badge bg-warning text-dark">Overweight: 25-29.9</span>
+                            <span class="badge bg-danger">Obese: 30+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-explained-card">
+                        <div class="feature-header">
+                            <i class="fas fa-pills"></i>
+                            <h5>Insulin</h5>
+                        </div>
+                        <p>2-Hour serum insulin (μIU/mL) - measures the pancreas's insulin production.</p>
+                        <div class="feature-range">
+                            <span class="badge bg-success">Normal: < 16</span>
+                            <span class="badge bg-warning text-dark">Elevated: 16-166</span>
+                            <span class="badge bg-danger">High: 166+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-explained-card">
+                        <div class="feature-header">
+                            <i class="fas fa-hand-holding-water"></i>
+                            <h5>Skin Thickness</h5>
+                        </div>
+                        <p>Triceps skin fold thickness (mm) - an indicator of body fat percentage.</p>
+                        <div class="feature-range">
+                            <span class="badge bg-success">Normal: < 20</span>
+                            <span class="badge bg-warning text-dark">Medium: 20-35</span>
+                            <span class="badge bg-danger">High: 35+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Performance Section -->
+    <section class="performance-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Model Performance</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <canvas id="modelChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 mt-4 text-center">
+                <div class="col-6 col-md-3">
+                    <div class="performance-card">
+                        <h3 class="display-4 fw-bold text-primary">77%</h3>
+                        <p>Accuracy</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="performance-card">
+                        <h3 class="display-4 fw-bold text-success">79%</h3>
+                        <p>Precision</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="performance-card">
+                        <h3 class="display-4 fw-bold text-warning">74%</h3>
+                        <p>Recall</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="performance-card">
+                        <h3 class="display-4 fw-bold text-info">76%</h3>
+                        <p>F1-Score</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section class="disclaimer-section py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="alert alert-warning" role="alert">
+                        <h4 class="alert-heading">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Important Disclaimer
+                        </h4>
+                        <p>
+                            This diabetes prediction system is for educational and informational purposes only. 
+                            It is <strong>NOT</strong> a medical device and should <strong>NOT</strong> be used as a 
+                            substitute for professional medical advice, diagnosis, or treatment.
+                        </p>
+                        <hr>
+                        <p class="mb-0">
+                            Always consult with a qualified healthcare provider for any medical concerns. 
+                            If you think you may have diabetes, please seek professional medical evaluation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container text-center">
+            <h2 class="mb-4">Try Our Prediction System</h2>
+            <p class="mb-4">Get your diabetes risk assessment now.</p>
+            <a href="/prediction" class="btn btn-light btn-lg px-5">
+                <i class="fas fa-calculator me-2"></i>Start Prediction
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">
+                        <i class="fas fa-heartbeat me-2"></i>Diabetes Predictor
+                    </h5>
+                    <p class="text-muted">Using machine learning to help predict diabetes risk early.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-muted text-decoration-none">Home</a></li>
+                        <li><a href="/prediction" class="text-muted text-decoration-none">Predict</a></li>
+                        <li><a href="/about" class="text-muted text-decoration-none">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-envelope me-2"></i>info@diabetespredictor.com</li>
+                        <li><i class="fas fa-phone me-2"></i>+1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>123 Health Street, Medical City</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center text-muted mb-0">
+                &copy; 2026 Diabetes Prediction System. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
